@@ -12,7 +12,7 @@ const argv = require('./argv');
 const port = require('./port');
 
 const session = require('express-session')
-letRedisStore = require('connect-redis')(session)
+let RedisStore = require('connect-redis')(session)
 const csurf = require('csurf')
 
 const setup = require('./middlewares/frontendMiddleware');
@@ -124,7 +124,7 @@ app.post('/signup', csrfProtection, (req, res) => {
   res.json(body)
 })
 
-app.post('/signin', csrfProtections, (req,res) => {
+app.post('/signin', csrfProtection, (req,res) => {
   const body = req.body;
   console.log('signin:body: ', body)
   res.json(body)
